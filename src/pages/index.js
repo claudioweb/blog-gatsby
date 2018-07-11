@@ -1,6 +1,8 @@
 import React from 'react'
 import Link from 'gatsby-link'
 
+import data from '../general/data.json';
+
 const IndexPage = () => (
   <div>
     <h1>Hi people</h1>
