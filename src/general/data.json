@@ -1,49 +1,25 @@
 {
   "templateKey": "navbar-element",
-  "logo": "/img/logo.svg",
-  "logoHorizontal": "/img/logohorizontal.svg",
+  "logo": "/img/anigif_original-29997-1458746172-3.gif",
+  "logoHorizontal": "/img/anigif_original-29997-1458746172-3.gif",
   "logInLink": "login?todo",
   "signUpLink": "signup?todo",
   "footer": {
     "socialMediaTitle": "Follow us in social media:",
-    "logoFooter": "/img/logofooter.svg",
+    "logoFooter": "",
     "signUpButton": {
       "label": "Get started now",
       "link": "signup?todo"
     },
-    "contacts": [
-      {
-        "label": "Mail us at:",
-        "contact": "contact@qwick.com",
-        "type": "mailto:"
-      },
-      {
-        "label": "or call",
-        "contact": "(310) 897 1234",
-        "type": "tel:"
-      }
-    ],
+    "contacts": [],
     "signInButton": {
       "label": "Sign in",
       "link": "login?todo"
     },
-    "socialMedia": [
-      {
-        "icon": "/img/socialfacebook.svg",
-        "link": "http://www.facebook.com"
-      },
-      {
-        "icon": "/img/socialtwitter.svg",
-        "link": "http://www.twitter.com"
-      },
-      {
-        "icon": "/img/sociallinkedin.svg",
-        "link": "http://www.linkedin.com"
-      }
-    ],
+    "socialMedia": [],
     "subtitle": "Sign up and start working right now on your next big thing.",
     "contactTitle": "Want to say hi?",
     "title": "Simplify your project management.",
-    "contactIcon": "/img/contacticon.svg"
+    "contactIcon": ""
   }
 }
