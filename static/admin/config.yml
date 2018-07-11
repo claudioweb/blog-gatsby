@@ -1,6 +1,348 @@
 backend:
   name: git-gateway
-  branch: master # Branch to update (optional; defaults to master)
+  branch: master
+  commit_messages:
+    create: CMS - Create {{collection}} "{{slug}}"
+    update: CMS - Update {{collection}} "{{slug}}"
+    delete: CMS - Delete {{collection}} "{{slug}}"
+    uploadMedia: CMS - Upload "{{path}}"
+    deleteMedia: CMS - Delete "{{path}}"
 
 media_folder: static/img
 public_folder: /img
+
+collections:
+  - name: "general"
+    label: "General"
+    files:
+      - file: "src/general/data.json"
+        label: "Navbar, Footer & Socials"
+        name: "data"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "navbar-element"}
+          - {label: Logo, name: logo, widget: image}
+          - {label: Logo Horizontal, name: logoHorizontal, widget: image}
+          - {label: "Log in link", name: logInLink, widget: "string"}
+          - {label: "Sign up link", name: signUpLink, widget: "string"}
+          - label: Footer
+            name: footer
+            widget: object
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Subtitle", name: "subtitle", widget: "text"}
+              - label: Sign In Button
+                name: signInButton
+                widget: object
+                fields:
+                  - {label: Label, name: label, widget: string}
+                  - {label: Link, name: link, widget: string}
+              - label: Sign Up Button
+                name: signUpButton
+                widget: object
+                fields:
+                  - {label: Label, name: label, widget: string}
+                  - {label: Link, name: link, widget: string}
+              - {label: Footer Logo, name: logoFooter, widget: image}
+              - {label: "Social Media Title", name: "socialMediaTitle", widget: "string"}
+              - label: "Social Media"
+                name: socialMedia
+                widget: list
+                fields:
+                  - {label: Icon, name: icon, widget: image}
+                  - {label: Link, name: link, widget: string}
+              - {label: "Contact Title", name: "contactTitle", widget: "string"}
+              - {label: Contact Icon, name: contactIcon, widget: image}
+              - label: "Contacts"
+                name: contacts
+                widget: list
+                fields:
+                  - {label: Label, name: label, widget: string}
+                  - {label: Contact, name: contact, widget: string}
+                  - label: Type
+                    name: type
+                    widget: select
+                    required: false
+                    default: null
+                    options:
+                      - {label: E-mail, value: "mailto:"}
+                      - {label: Telephone, value: "tel:"}
+      - file: "src/general/metaData.json"
+        label: "Meta data"
+        name: "metaData"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "meta-data"}
+          - {label: Page Title, name: pageTitle, widget: string}
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "src/pages/index.md"
+        label: "Home"
+        name: "home"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page"}
+          - label: Header
+            name: header
+            widget: object
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Subtitle", name: "subtitle", widget: "text"}
+              - label: Button
+                name: button
+                widget: object
+                fields:
+                  - {label: Label, name: label, widget: string}
+                  - {label: Link, name: link, widget: string}
+              - {label: Header image, name: headerImage, widget: image}
+              - label: Cards
+                name: cards
+                widget: list
+                fields:
+                  - {label: Title, name: title, widget: string}
+                  - {label: Subtitle, name: subtitle, widget: text}
+                  - {label: Icon, name: icon, widget: image}
+                  - label: Button
+                    name: button
+                    widget: object
+                    fields:
+                      - {label: Label, name: label, widget: string}
+                      - {label: Link, name: link, widget: string}
+                      - label: Modifier
+                        name: modifier
+                        widget: select
+                        required: false
+                        default: null
+                        options:
+                          - {label: Green, value: "green"}
+                          - {label: Yellow, value: "yellow"}
+          - label: Main
+            name: main
+            widget: object
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Subtitle", name: "subtitle", widget: "text"}
+              - label: Slider field
+                name: slider
+                widget: list
+                fields:
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Subtitle", name: "subtitle", widget: "text"}
+                  - {label: Default icon, name: defaulticon, widget: image}
+                  - {label: Active icon, name: activeIcon, widget: image}
+                  - {label: Image, name: image, widget: image}
+                  - label: Link
+                    name: link
+                    widget: object
+                    fields:
+                      - {label: Label, name: label, widget: string}
+                      - {label: Link, name: link, widget: string}
+          - label: Footer
+            name: footer
+            widget: object
+            fields:              
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Subtitle", name: "subtitle", widget: "string"}
+              - {label: Image, name: image, widget: image}
+
+      - file: "src/pages/features/index.md"
+        label: "Features Page"
+        name: "features"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "features-page"}
+          - {label: Section name, name: sectionName, widget: string}
+          - label: Header
+            name: header
+            widget: object
+            fields:
+              - {label: Title, name: title, widget: string}
+              - {label: Subtitle, name: subtitle, widget: text}
+              - label: Card 1
+                name: card1
+                widget: object
+                fields:
+                  - {label: Card icon, name: cardIcon, widget: image}
+                  - {label: Heading, name: heading, widget: string}
+                  - {label: Description, name: description, widget: text}
+                  - label: Button
+                    name: button
+                    widget: object
+                    fields:
+                      - {label: Label, name: label, widget: string}
+                      - {label: Link, name: link, widget: string}
+                  - label: Icons
+                    name: icons
+                    widget: list
+                    fields:
+                      - {label: Description, name: description, widget: string}
+                      - {label: Icon, name: icon, widget: image}
+              - label: Card 2
+                name: card2
+                widget: object
+                fields:
+                  - {label: Card icon, name: cardIcon, widget: image}
+                  - {label: Heading, name: heading, widget: string}
+                  - {label: Description, name: description, widget: text}
+                  - label: Button
+                    name: button
+                    widget: object
+                    fields:
+                      - {label: Label, name: label, widget: string}
+                      - {label: Link, name: link, widget: string}
+                  - label: Icons
+                    name: icons
+                    widget: list
+                    fields:
+                      - {label: Description, name: description, widget: string}
+                      - {label: Icon, name: icon, widget: image}
+          - {label: Manager features title, name: managerFeaturesTitle, widget: string}
+          - label: Manager Features
+            name: managerFeatures
+            widget: list
+            fields:
+              - {label: Title, name: title, widget: string}
+              - {label: Subtitle, name: subtitle, widget: text}
+              - {label: Feature icon, name: featureIcon, widget: image}
+              - {label: Image, name: image, widget: image}
+              - {label: id, name: id, required: false, widget: string}
+              - {label: Option 1, name: option1, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Icon, name: icon, widget: image}]}
+              - {label: Option 2, name: option2, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Icon, name: icon, widget: image}]}
+          - {label: Collaborator features title, name: collaboratorFeaturesTitle, widget: string}
+          - label: Collaborator features
+            name: collaboratorFeatures
+            widget: list
+            fields:
+              - {label: Title, name: title, widget: string}
+              - {label: Subtitle, name: subtitle, widget: text}
+              - {label: Feature icon, name: featureIcon, widget: image}
+              - {label: Image, name: image, widget: image}
+              - {label: id, name: id, required: false, widget: string}
+              - {label: Option 1, name: option1, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Icon, name: icon, widget: image}]}
+              - {label: Option 2, name: option2, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Icon, name: icon, widget: image}]}
+          - label: Footer
+            name: footer
+            widget: object
+            fields:
+              - {label: Title, name: title, widget: string}
+              - {label: Subtitle, name: subtitle, widget: text}
+              - label: Cards
+                name: cards
+                widget: list
+                fields:
+                  - {label: Title, name: title, widget: string}
+                  - {label: Subtitle, name: subtitle, widget: text}
+                  - {label: Icon, name: icon, widget: image}
+
+      - file: "src/pages/pricing/index.md"
+        label: "Pricing Page"
+        name: "pricing"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "pricing-page"}
+          - label: First section
+            name: pricing
+            widget: object
+            fields:
+              - {label: Section name, name: sectionName, widget: string}
+              - {label: Title, name: title, widget: string}
+              - {label: Subtitle, name: subtitle, widget: text}
+              - label: Left column
+                name: leftColumn
+                widget: object
+                fields:
+                  - {label: icon, name: icon, widget: image}
+                  - {label: Heading, name: heading, widget: string}
+                  - {label: Description, name: description, widget: text}
+                  - {label: Price, name: price, widget: text}
+                  - {label: Condition, name: condition, widget: text}
+                  - label: Button
+                    name: button
+                    widget: object
+                    fields:
+                      - {label: Label, name: label, widget: string}
+                      - {label: Link, name: link, widget: string}
+                  - {label: Subtitle, name: subtitle, widget: text}
+                  - label: Checks
+                    name: checks
+                    widget: list
+                    fields:
+                      - {label: Title, name: title, widget: string}
+              - label: Main column
+                name: mainColumn
+                widget: object
+                fields:
+                  - {label: icon, name: icon, widget: image}
+                  - {label: Heading, name: heading, widget: string}
+                  - {label: Description, name: description, widget: text}
+                  - {label: Price, name: price, widget: text}
+                  - {label: Condition, name: condition, widget: text}
+                  - label: Button
+                    name: button
+                    widget: object
+                    fields:
+                      - {label: Label, name: label, widget: string}
+                      - {label: Link, name: link, widget: string}
+                  - {label: Subtitle, name: subtitle, widget: text}
+                  - label: Checks
+                    name: checks
+                    widget: list
+                    fields:
+                      - {label: Title, name: title, widget: string}
+              - label: Right column
+                name: rightColumn
+                widget: object
+                fields:
+                  - {label: icon, name: icon, widget: image}
+                  - {label: Heading, name: heading, widget: string}
+                  - {label: Description, name: description, widget: text}
+                  - {label: Price, name: price, widget: text}
+                  - {label: Condition, name: condition, widget: text}
+                  - label: Button
+                    name: button
+                    widget: object
+                    fields:
+                      - {label: Label, name: label, widget: string}
+                      - {label: Link, name: link, widget: string}
+                  - {label: Subtitle, name: subtitle, widget: text}
+                  - label: Checks
+                    name: checks
+                    widget: list
+                    fields:
+                      - {label: Title, name: title, widget: string}
+          - label: Second section
+            name: enterprise
+            widget: object
+            fields:
+              - {label: Section name, name: sectionName, widget: string}
+              - {label: Title, name: title, widget: string}
+              - {label: Subtitle, name: subtitle, widget: text}
+              - label: Button
+                name: button
+                widget: object
+                fields:
+                  - {label: Label, name: label, widget: string}
+                  - {label: Link, name: link, widget: string}
+          - label: Section
+            name: section
+            widget: object
+            fields:
+              - {label: Title, name: title, widget: string}
+              - {label: Image, name: image, widget: image}
+              - label: Options
+                name: options
+                widget: list
+                fields:
+                  - {label: Title, name: title, widget: string}
+                  - {label: Subtitle, name: subtitle, widget: text}
+                  - {label: Icon, name: icon, widget: image}
+          - label: FAQ
+            name: faq
+            widget: object
+            fields:
+              - {label: Title, name: title, widget: string}
+              - {label: Subtitle, name: subtitle, widget: text}
+              - label: Questions
+                name: questions
+                widget: list
+                fields:
+                  - {label: Question, name: question, widget: string}
+                  - {label: Answer, name: answer, widget: text}
+          
