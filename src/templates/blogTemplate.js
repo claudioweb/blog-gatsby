@@ -15,6 +15,7 @@ export default function Template({
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </div>
+      <a href="/posts"></a>
     </div>
   );
 }
