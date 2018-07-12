@@ -16,7 +16,6 @@ const Header = ({ siteTitle }) => (
         padding: '1.45rem 1.0875rem',
       }}
     >
-    <img src={ data.logo } />
       <h1 style={{ margin: 0 }}>
         <Link
           to="/"
@@ -25,6 +24,7 @@ const Header = ({ siteTitle }) => (
             textDecoration: 'none',
           }}
         >
+         <img src={ data.logo } />
           {siteTitle}
         </Link>
       </h1>
