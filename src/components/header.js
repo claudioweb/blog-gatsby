@@ -3,7 +3,6 @@ import Link from 'gatsby-link'
 import data from '../general/data.json';
 
 const Header = ({ siteTitle }) => (
- <img src={ data.logo } />
   <div
     style={{
       background: 'rebeccapurple',
@@ -17,6 +16,7 @@ const Header = ({ siteTitle }) => (
         padding: '1.45rem 1.0875rem',
       }}
     >
+    <img src={ data.logo } />
       <h1 style={{ margin: 0 }}>
         <Link
           to="/"
